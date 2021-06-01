@@ -7,7 +7,7 @@ from math import inf
 def floyd_warshall(G):
     n = len(G)
 
-    P = [[None]*n for _ in range(n)] #poprzednik v na najkrótszej ścieżce z u do v
+    P = [[None]*n for _ in range(n)] #poprzednik v na najkrótszej ścieżce z u do v,parents
     S = [[inf]*n for _ in range(n)] #macierz dł. najkrótszych ścieżek używających {v1,...,vt} jako wewnętrzne
 
     for i in range(n):
@@ -17,13 +17,14 @@ def floyd_warshall(G):
         for j in range(n):
             if G[i][j] != 0:
                 S[i][j] = G[i][j]
+                P[i][j] = i
 
     for t in range(n):
         for u in range(n):
             for v in range(n):
                 if S[u][v] > S[u][t] + S[t][v]:
                     S[u][v] = S[u][t] + S[t][v]
-                    P[u][v] = t
+                    P[u][v] = P[t][v]
 
     return S
 
