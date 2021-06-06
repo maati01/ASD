@@ -32,7 +32,6 @@ def dijkstra(G,v):
 
         v = minimum_distance(d,n,v,processed)
 
-
     return d
 
 
