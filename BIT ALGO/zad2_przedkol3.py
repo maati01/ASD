@@ -82,19 +82,19 @@ def internet_cafe(A,T,K):
 
 
 
-#True
+#False
 K = 4
 A = [[0, 1], [3], [0, 1, 2, 3], [3], [3], [0]]  # aplikacje
 T = [0,1,2,1,0,0] #ilosc aplikacji których potrzebujemy
 print(internet_cafe(A,T,K))
 
-#True
+#True [1, 2, 2, 3]
 K = 4
 A = [[0, 1], [0,3], [0, 1, 2, 3], [3], [1,3], [0]]  # aplikacje
 T = [0,1,2,1,0,0] #ilosc aplikacji których potrzebujemy
 print(internet_cafe(A,T,K))
 
-#True
+#True [1, 2, 2, 3, 5, 5]
 K = 6
 A = [[0, 1], [0,3], [0, 1, 2, 3], [3], [1,3], [0,4,5]]
 T = [0,1,2,1,0,2]
