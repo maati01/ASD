@@ -45,12 +45,15 @@ def add(root,key):
             curr = curr.left
             left = True
 
+        #elif key == curr.key: #klucz juz jest w drzewie
+            #return False
+
         else:
             prev = curr
             curr = curr.right
             left = False
 
-    curr = BSTNode(key)
+    curr = BSTNode(key) #tworze klucz
     if left:
         prev.left = curr
     else:
@@ -58,6 +61,7 @@ def add(root,key):
 
     curr.parent = prev
 
+    #return True #w zależności od implementacji
     return root
 
 
@@ -151,5 +155,5 @@ tree = add(tree, 8)
 
 #printChildrenFirst(tree)
 #print(prev(tree,40))
-print(find_next(tree,21))
+#print(find_next(tree,21))
 
