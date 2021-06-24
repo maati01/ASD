@@ -1,13 +1,14 @@
-#binary search tree
+# binary search tree
 
 class BSTNode:
-    def __init__(self,key):
+    def __init__(self, key):
         self.key = key
         self.left = None
         self.right = None
         self.parent = None
 
-def find(root,key):
+
+def find(root, key):
     while root != None:
         if root.key == key:
             return root
@@ -32,7 +33,8 @@ def find(root,key):
 
     return root'''
 
-def add(root,key):
+
+def add(root, key):
     curr = root
     prev = None
     if curr is None:
@@ -45,15 +47,15 @@ def add(root,key):
             curr = curr.left
             left = True
 
-        #elif key == curr.key: #klucz juz jest w drzewie
-            #return False
+        # elif key == curr.key: #klucz juz jest w drzewie
+        # return False
 
         else:
             prev = curr
             curr = curr.right
             left = False
 
-    curr = BSTNode(key) #tworze klucz
+    curr = BSTNode(key)  # tworze klucz
     if left:
         prev.left = curr
     else:
@@ -61,7 +63,7 @@ def add(root,key):
 
     curr.parent = prev
 
-    #return True #w zależności od implementacji
+    # return True #w zależności od implementacji
     return root
 
 
@@ -81,6 +83,7 @@ def printChildrenFirst(tree: BSTNode):
         print("")
         children = newchildren
 
+
 def min_tree(root):
     if root.left is None:
         return root
@@ -88,6 +91,7 @@ def min_tree(root):
         root = root.left
 
     return root.key
+
 
 def max_tree(root):
     if root.right is None:
@@ -97,47 +101,102 @@ def max_tree(root):
 
     return root.key
 
-def prev(root,key):
-    root = find(root,key)
+
+def prev(root, key):
+    root = find(root, key)
     if root is None:
         return None
-    elif root.left is None: #sytacja gdy nie moge isc w lewo
-        if root.parent is None: #sytacja z samym rootem
+    elif root.left is None:  # sytacja gdy nie moge isc w lewo
+        if root.parent is None:  # sytacja z samym rootem
             return root
-        else: #wspinam sie po lewej az raz przejde po prawej
+        else:  # wspinam sie po lewej az raz przejde po prawej
             while root.key < root.parent.key:
                 root = root.parent
-                if root.parent is None: #sytacja gdy nie ma poprzednika
+                if root.parent is None:  # sytacja gdy nie ma poprzednika
                     return None
             return root.parent.key
 
     root = root.left
 
-    while root.right != None: #sytuacja gdy moge pojsc raz w lewo doł a potem maksimum w prawo
+    while root.right != None:  # sytuacja gdy moge pojsc raz w lewo doł a potem maksimum w prawo
         root = root.right
 
     return root.key
 
-def find_next(root,key):
+
+def find_next(root, key):
     root = find(root, key)
     if root is None:
         return None
-    elif root.right is None:#sytacja gdy nie moge isc w prawo
-        if root.parent is None: #sytacja gdy mamy samego roota
+    elif root.right is None:  # sytacja gdy nie moge isc w prawo
+        if root.parent is None:  # sytacja gdy mamy samego roota
             return root
         else:
-            while root.key > root.parent.key: #ide w góre, aż przejde po wiekszym kluczu
+            while root.key > root.parent.key:  # ide w góre, aż przejde po wiekszym kluczu
                 root = root.parent
-                if root.parent is None: #sytacja gdy nie ma nastepnika
+                if root.parent is None:  # sytacja gdy nie ma nastepnika
                     return None
             return root.parent.key
 
     root = root.right
 
-    while root.left != None: #sytacja gdy moge isc raz w prawo i ciagle w lewo
+    while root.left != None:  # sytacja gdy moge isc raz w prawo i ciagle w lewo
         root = root.left
 
     return root.key
+
+
+def display(self):
+    lines, *_ = self.display_aux()
+    for line in lines:
+        print(line)
+
+
+def display_aux(self):
+    """Returns list of strings, width, height, and horizontal coordinate of the root."""
+    # No child.
+    if self.right is None and self.left is None:
+        line = '%s' % self.key
+        width = len(line)
+        height = 1
+        middle = width // 2
+        return [line], width, height, middle
+
+    # Only left child.
+    if self.right is None:
+        lines, n, p, x = self.left.display_aux()
+        s = '%s' % self.key
+        u = len(s)
+        first_line = (x + 1) * ' ' + (n - x - 1) * '_' + s
+        second_line = x * ' ' + '/' + (n - x - 1 + u) * ' '
+        shifted_lines = [line + u * ' ' for line in lines]
+        return [first_line, second_line] + shifted_lines, n + u, p + 2, n + u // 2
+
+    # Only right child.
+    if self.left is None:
+        lines, n, p, x = self.right.display_aux()
+        s = '%s' % self.key
+        u = len(s)
+        first_line = s + x * '_' + (n - x) * ' '
+        second_line = (u + x) * ' ' + '\\' + (n - x - 1) * ' '
+        shifted_lines = [u * ' ' + line for line in lines]
+        return [first_line, second_line] + shifted_lines, n + u, p + 2, u // 2
+
+    # Two children.
+    left, n, p, x = self.left.display_aux()
+    right, m, q, y = self.right.display_aux()
+    s = '%s' % self.key
+    u = len(s)
+    first_line = (x + 1) * ' ' + (n - x - 1) * '_' + s + y * '_' + (m - y) * ' '
+    second_line = x * ' ' + '/' + (n - x - 1 + u + y) * ' ' + '\\' + (m - y - 1) * ' '
+    if p < q:
+        left += [n * ' '] * (q - p)
+    elif q < p:
+        right += [m * ' '] * (p - q)
+    zipped_lines = zip(left, right)
+    lines = [first_line, second_line] + [a + u * ' ' + b for a, b in zipped_lines]
+    return lines, n + m + u, max(p, q) + 2, n + u // 2
+
 
 tree = BSTNode(21)
 
@@ -153,7 +212,8 @@ tree = add(tree, 7)
 tree = add(tree, 13)
 tree = add(tree, 8)
 
+
 #printChildrenFirst(tree)
 #print(prev(tree,40))
 #print(find_next(tree,21))
-
+display(tree)
