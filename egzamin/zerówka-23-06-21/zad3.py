@@ -2,7 +2,7 @@ from zad3testy import runtests
 from queue import PriorityQueue
 from math import inf
 
-#dijsktra O(V^2)
+#dijsktra O(V^2) (jeśli ominę PriorityQueue własną funkcją)
 #zmydofikowana dijkstra, 'rozbijam' kazdy wierzchołek na 3, gdzie:
 #1 - moze uzyc butów
 #2 - właśnie używa butów
