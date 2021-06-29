@@ -1,7 +1,6 @@
 from zad2testy import runtests
 from math import inf
 
-def let( ch ): return ord(ch) - ord("a")
 
 def letters( G, W ): #G(L,E)
     L,E = G
