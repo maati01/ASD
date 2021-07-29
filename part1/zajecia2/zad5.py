@@ -31,5 +31,9 @@ def leader(A):
 
 A = [1, 1, 2, 3, 4, 4, 3, 3, 3, 3, 3, 2, 3]
 B = [1, 1, 2, 3, 4, 4, 3, 3, 3, 3, 2, 2, 3]
+C = [1,1,2,2,2]
+D = [1,1,2,2,3]
 print(leader(A))
 print(leader(B))
+print(leader(C))
+print(leader(D))
