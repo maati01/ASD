@@ -23,23 +23,53 @@ def merge(arr, p, q, r):
             arr[k] = R[j]
             j += 1
 
+def find_indexes(A,p):
+    n = len(A)
+    q = None
+    r = None
+    for i in range(p+1, n-1):
+        if q is None and A[i] < A[i-1]:
+            q = i
+        elif q is not None and A[i] < A[i-1]:
+            r = i
+
+    if q is not None and r is None:
+        r = n - 1
+
+    return q , r
 
 def natural_series(A):
     n = len(A)
-    flag = True
-    index = []
+    while True:
+        p = 0
+        while True:
+            q, r = find_indexes(A, p)
+            if p == 0 and q is None:
+                return A
 
-    for i in range(1, n):
-        if A[i - 1] < A[i]:
-            index.append(i)
+            if q is None:
+                break
 
-    k = len(index)
 
-    for i in range(k-1):
-        merge(A,0,index[i],index[i+1])
 
-    return A
+            merge(A,p,q - 1,r - 1)
+
+            p = r
 
 
 A = [1, 2, 56, 57, 3, 3, 4, 5, 9, 10, 99, 109, -3, -2, 2000]
 print(natural_series(A))
+print(sorted(A))
+B = [-9,-8,-7,-6,-4]
+print(natural_series(B))
+print(sorted(B))
+C = [1]
+print(natural_series(C))
+print(sorted(C))
+D = [1,2,3,1,2,3]
+print(natural_series(D))
+print(sorted(D))
+E = [3,2,1,3,2,0,-1,-2,9]
+print(natural_series(E))
+print(sorted(E))
+
