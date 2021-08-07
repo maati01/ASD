@@ -30,27 +30,21 @@ def all_colors(A, k):
             else:
                 j += 1
         while n > j >= i + k - 1:
+            colors[A[i]] -= 1
+            if colors[A[i]] == 0:
+                i += 1
+                counter -= 1
+                break
+
             if counter == k:
+                i += 1
                 result = j - i
                 if result < the_best_result:
                     the_best_result = result
                     result_i = i
                     result_j = j
-                else:
-                    colors[A[i]] -= 1
-                    if colors[A[i]] == 0:
-                        counter -= 1
-                        i += 1
-                        break
-                    else:
-                        i += 1
 
-            else:
-                colors[A[i]] -= 1
-                if colors[A[i]] == 0:
-                    counter -= 1
-                    break
-                i += 1
+
 
     return the_best_result, result_i, result_j
 

@@ -1,7 +1,7 @@
 #f(i,t) = max wartość podziału a1,..,ai na t ciągów
 #f(i,t) = min ( f(i - p, t - 1), suma od a(p + 1) do ai )
 
-def better_sum(T,j,i):
+def better_sum(T,j,i): #można zrobić w czasie stałym odejmując sumy XD
     sum_ = 0
     for k in range(j,i):
         sum_ += T[k]
