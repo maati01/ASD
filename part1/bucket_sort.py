@@ -37,13 +37,12 @@ def bucket_sort(A):
         if minimum > A[i]:
             minimum = A[i]
 
-    bucket = find_bucket(A, n, minimum, maximum, i)
 
     for i in range(len(A)): #tworze buckety
         B.append([])
 
     for i in range(n):
-        B[bucket].append(A[i]) #dodaje element do odpowiedniego bucketa
+        B[find_bucket(A, n, minimum, maximum, i)].append(A[i]) #dodaje element do odpowiedniego bucketa
 
     for i in range(n): #sortowanie pojedynczych bucketów
         insertion_sort(B[i])
