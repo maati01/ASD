@@ -10,7 +10,7 @@ def knapsack(W,P,MaxW): # złożoność O(n * sum_)
     F[0][P[0]] = W[0]
     for i in range(1,n): # O(n)
         for p in range(sum_ + 1): #O(sum_)
-            if p < P[i]:
+            if p <= P[i]:
                 F[i][p] = F[i - 1][p]
             else:
                 F[i][p] = min(F[i-1][p], F[i-1][p- P[i]] + W[i])
