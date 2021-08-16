@@ -17,9 +17,6 @@ def frog(A):
                 if sum_energy > j + i - k - A[i]:
                     F[i][j] = min(F[k][max(j + i - k - A[i], 0)] + 1,F[i][j]) #cofam sie o i - k
 
-
-
-
     min_ = inf
     for i in range(sum_energy):
         if min_ > F[n-1][i]:
@@ -33,9 +30,11 @@ C = [2,2,1,0,0]
 D = [2,2,1,0,0,0]
 E = [2,2,1,0,0,0,0]
 F = [4,5,2,5,1,2,1,0]
+G = [3,2,0,3,0,0,0,0]
 print(frog(A))
 print(frog(B))
 print(frog(C))
 print(frog(D))
 print(frog(E))
 print(frog(F))
+print(frog(G))
