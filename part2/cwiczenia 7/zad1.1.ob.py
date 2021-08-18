@@ -1,3 +1,5 @@
+#jeśli mogę dojechać do następnej stacji z obecnym paliwem to jade
+#jeśli nie to tankuje do pełna
 def tank(B,T,l):
     cnt = 0
     n = len(T)
