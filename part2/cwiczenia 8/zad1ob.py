@@ -25,7 +25,7 @@ def remove(G):
     for i in range(n): #krotka z indeksem i czasem przetworzenia
         process[i] = (process[i],i)
 
-    process = sorted(process, key = lambda x: x[0]) #sortuej po czasie przetowrzenia
+    process = sorted(process, key = lambda x: x[0]) #sortuej po czasie przetowrzenia, prawdopodobnie nie jest to potrzebne, wystarczy wracac od najmniejszego czasu przetworzenia po parentach
 
     for i in range(n):
         process[i] = process[i][1]
