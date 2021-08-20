@@ -13,6 +13,11 @@ def universal_output(G):
         elif G[potential_v][j] == 0 and G[j][potential_v] == 1:
             j += 1
         else:
+            potential_v = j
+            j += 1
+
+    for i in range(n): #sprawdzam czy kandydat ma wszystkie krawedzie
+        if G[i][potential_v] == 0 and potential_v != i:
             return False
 
     return potential_v
@@ -44,4 +49,12 @@ graph = [[0,0,1,1,0],
          [0,0,0,0,0],
          [0,0,1,0,1],
          [0,0,1,0,0]]
+print(universal_output(graph))
+
+#4
+graph = [[0,0,0,1,1],
+         [1,0,1,0,1],
+         [0,0,0,0,1],
+         [0,0,1,0,1],
+         [0,0,0,0,0]]
 print(universal_output(graph))
