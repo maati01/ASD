@@ -6,7 +6,7 @@ from math import inf
 
 #prawdopodbnie problem ze zlożonoscią
 #wydaje mi się że jest to O(V^2 + E)
-#ewentualnie O(E*V^2) XD
+#ewentualnie O((E+V)*V) XD
 #wersja 4.1 jest lepsza
 def DFS(G, x, edges, last):  # zmodyfikowany dfs
     n = len(G)
