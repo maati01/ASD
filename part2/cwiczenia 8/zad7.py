@@ -1,7 +1,9 @@
 #używam wierzchołka tylko z wartością 1
 #jeśli ma większą wartość to zmniejszam o 1 i wrzucam go ponownie do kolejki
 #to sprawia że priorytet mają pola o najmniejszej wartości
-#odległość dodaje gdy tymczasowa wartosc bedzie rowna 1
+#wchodząc z wierzchołka 1 do jakiegolkowiek innego wartosc dodaje od razu
+#wychodze tylko z wierzchołków gdzie wartosc tymczasowa jest rowna 1
+
 from queue import Queue
 from math import inf
 
