@@ -1,9 +1,9 @@
 #lekko zmodyfikowany bellman ford
 #sortuje po wartościach krawedzie
-#dobieram sciezke od najwiekszej
+#dobieram sciezke od najwiekszej krawedzi
 #jesli pasuje do poprzedniego wierzchołka to kontynuje
 #jesli nie to pomijam
-#to mi gwarantuje ze zawsze dobiore od najwiekszej do najmniejszej
+#to mi gwarantuje ze zawsze dobiore od najwiekszej do najmniejszej krawedzi
 from math import inf
 
 def get_result(parents,x,y):
