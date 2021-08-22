@@ -1,4 +1,7 @@
 from queue import Queue
+#moge poplynąc tylko w kierunku 4 wektorów
+#sprawdzam tylko mozliwe wierzchołki których jest v^2
+#O(v^2)
 
 def get_result(parents,w):
     if w is None:
