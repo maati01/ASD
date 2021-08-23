@@ -45,7 +45,7 @@ def dijkstra(G,v,t):
             for i in range(cnt_v[u]):
                 if d[G[start_ind[u] + i][1]] > dist + G[start_ind[u] + i][2]: #relaksacja
                     d[G[start_ind[u] + i][1]] = dist + G[start_ind[u] + i][2]
-                    parents[i] = u
+                    parents[G[start_ind[u] + i][1]] = u
                     Q.put((d[G[start_ind[u] + i][1]],G[start_ind[u] + i][1]))
             processed[u] = True
 
