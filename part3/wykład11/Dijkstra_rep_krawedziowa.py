@@ -41,7 +41,6 @@ def dijkstra(G,v,t):
         u = temp[1]
         dist = temp[0]
         if not processed[u]: #sprawdzam tylko nieprzetworzone wierzchołki, to poprawia wydajnosc
-
             for i in range(cnt_v[u]):
                 if d[G[start_ind[u] + i][1]] > dist + G[start_ind[u] + i][2]: #relaksacja
                     d[G[start_ind[u] + i][1]] = dist + G[start_ind[u] + i][2]
