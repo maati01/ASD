@@ -2,7 +2,10 @@ from zad3testy import runtests
 import math
 
 #zwykły bucket sort
-#zazkres bucketów od 1 do a
+#x ma rozklad jednostajny
+#trzeba znalezc krancowe x zeby storzyc buckety
+#skorzystam z x = log(a,tab[i])
+#szukamy buckeity na podstawie powyzszego rownania
 def insertion_sort(arr):
   n = len(arr)
   for i in range(1, n):
@@ -18,8 +21,8 @@ def insertion_sort(arr):
   return arr
 
 
-def find_bucket(A, n, minimum, maximum, i): #funkcja przydziela bucketa uwzględniająć liczby ujemne
-    _i = int((A[i] - minimum) / (maximum - minimum) * n)
+def find_bucket(A, n, minimum, maximum, i,a): #funkcja przydziela bucketa uwzględniająć liczby ujemne
+    _i = int((math.log(A[i],a) - minimum) / (maximum - minimum) * n)
     if _i == n: _i -= 1
 
     return _i
@@ -31,14 +34,15 @@ def fast_sort(tab, a):
     B = []
     indeks = 0
 
-    minimum = 1
-    maximum = a
+    minimum = math.log(min(tab),a)
+    maximum = math.log(max(tab),a)
+
 
     for i in range(len(tab)): #tworze buckety
         B.append([])
 
     for i in range(n):
-        B[find_bucket(tab, n, minimum, maximum, i)].append(tab[i]) #dodaje element do odpowiedniego bucketa
+        B[find_bucket(tab, n, minimum, maximum, i,a)].append(tab[i]) #dodaje element do odpowiedniego bucketa
 
     for i in range(n): #sortowanie pojedynczych bucketów
         insertion_sort(B[i])
