@@ -130,7 +130,7 @@ def find_next(root, key):
         return None
     elif root.right is None:  # sytacja gdy nie moge isc w prawo
         if root.parent is None:  # sytacja gdy mamy samego roota
-            return root
+            return root.key
         else:
             while root.key > root.parent.key:  # ide w góre, aż przejde po wiekszym kluczu
                 root = root.parent
@@ -147,7 +147,7 @@ def find_next(root, key):
 
 
 def display(self):
-    lines, *_ = self.display_aux()
+    lines, *_ = display_aux(self)
     for line in lines:
         print(line)
 
@@ -164,7 +164,7 @@ def display_aux(self):
 
     # Only left child.
     if self.right is None:
-        lines, n, p, x = self.left.display_aux()
+        lines, n, p, x = display_aux(self.left)
         s = '%s' % self.key
         u = len(s)
         first_line = (x + 1) * ' ' + (n - x - 1) * '_' + s
@@ -174,7 +174,7 @@ def display_aux(self):
 
     # Only right child.
     if self.left is None:
-        lines, n, p, x = self.right.display_aux()
+        lines, n, p, x = display_aux(self.right)
         s = '%s' % self.key
         u = len(s)
         first_line = s + x * '_' + (n - x) * ' '
@@ -183,8 +183,8 @@ def display_aux(self):
         return [first_line, second_line] + shifted_lines, n + u, p + 2, u // 2
 
     # Two children.
-    left, n, p, x = self.left.display_aux()
-    right, m, q, y = self.right.display_aux()
+    left, n, p, x = display_aux(self.left)
+    right, m, q, y = display_aux(self.right)
     s = '%s' % self.key
     u = len(s)
     first_line = (x + 1) * ' ' + (n - x - 1) * '_' + s + y * '_' + (m - y) * ' '
@@ -197,6 +197,39 @@ def display_aux(self):
     lines = [first_line, second_line] + [a + u * ' ' + b for a, b in zipped_lines]
     return lines, n + m + u, max(p, q) + 2, n + u // 2
 
+def remove(tree,key):
+    root = find(tree,key)
+    if root is None:
+        return tree
+
+    if root.right is None and root.left is None: #sytacja z liściem
+        if root.parent.key > root.key:
+            root.parent.left = None
+
+        else:
+            root.parent.right = None
+
+    elif root.left is None: #sytacja z jednym dzieckiem
+        if root.parent.key > root.right.key:
+            root.parent.left = root.right
+
+        else:
+            root.parent.right = root.right
+
+
+    elif root.right is None: #sytacja z jednym dzieckiem
+        if root.parent.key > root.left.key:
+            root.parent.left = root.left
+
+        else:
+            root.parent.right = root.left
+
+    else: #gdy mam dwoje dzieci, szukam nastepnika, usuwam go a jego wartosc nadpisuje w miejsce które chcialem pierwotnie usunąć
+        next_val = find_next(tree,key)
+        tree = remove(tree,next_val)
+        root.key = next_val
+
+    return tree
 
 tree = BSTNode(21)
 
@@ -214,6 +247,16 @@ tree = add(tree, 8)
 
 
 #printChildrenFirst(tree)
-#print(prev(tree,40))
-#print(find_next(tree,21))
+print(prev(tree,13))
+print(find_next(tree,20))
+print(find_next(tree,13))
+display(tree)
+tree = remove(tree,37)
+display(tree)
+
+tree = remove(tree,25)
+display(tree)
+tree = remove(tree,15)
+display(tree)
+tree = remove(tree,13)
 display(tree)
