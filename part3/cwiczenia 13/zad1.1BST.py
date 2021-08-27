@@ -36,7 +36,10 @@ def add(root, key): #dodawanie rekurencyjne, wuzględniająć liczbę węzłów
     return root
 
 def find_i_value(root,i):
-    ind = root.left.cnt + 1
+    ind = 1
+    if root.left is not None:
+        ind = root.left.cnt + 1
+
 
     while ind != i :
         if ind > i: #ide w lewo
