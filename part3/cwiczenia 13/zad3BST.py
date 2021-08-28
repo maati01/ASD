@@ -1,55 +1,66 @@
 class BSTNode:
-    def __init__(self, key):
-        self.key = key
-        self.left = None
-        self.right = None
-        self.parent = None
+    def __init__(self):
+        self.G = None
+        self.A = None
+        self.T = None
+        self.C = None
+        self.end = False
 
-#tworze BST
-#zamiast liczb naturalnych trzymam stringi w węzłach
-#tak sprawdzam czy węzeł już występuje, jeśli nie to dodaje go
-
-def find(root, key):
-    while root != None:
-        if root.key == key:
-            return True
-        elif key < root.key:
-            root = root.left
-        else:
-            root = root.right
-
-    return False
-
-def add(root, key): #dodawanie rekurencyjne, wuzględniająć liczbę węzłów
-    if find(root,key):
-        return False
-
-    if root is None:
-        root = BSTNode(key)
-    elif key < root.key:
-        root.left = add(root.left, key)
-    elif key > root.key:
-        root.right = add(root.right, key)
-
-
-    return root
+#tworze BST ze wksaźnikami na G,A,T,C
+#iteruje po stringu idac analogicznie po drzewie
+#dostawiam węzły na kolejncyh literach jesli nie było takiego stringa
+#zapisuje koniec
+#jeśli jakiś string skończy sie w takim samym miejscu to znaczy że już wystąpił
+#O(n*len_max_string)
 
 def check_different_strings(T):
     n = len(T)
 
-    if n == 0:
-        return True
+    tree = BSTNode()
 
-    tree = BSTNode(T[0])
+    for i in range(n):
+        root = tree
+        k = len(T[i])
+        for j in range(k):
+            x = T[i][j]
+            if T[i][j] == 'G' and root.G is not None:
+                root = root.G
+                continue
+            elif T[i][j] == 'G' and root.G is None:
+                root.G = BSTNode()
+                root = root.G
+                continue
 
-    for i in range(1,n):
-        if find(tree,T[i]):
+            if T[i][j] == 'A' and root.A is not None:
+                root = root.A
+                continue
+            elif T[i][j] == 'A' and root.A is None:
+                root.A = BSTNode()
+                root = root.A
+                continue
+
+            if T[i][j] == 'T' and root.T is not None:
+                root = root.T
+                continue
+            elif T[i][j] == 'T' and root.T is None:
+                root.T = BSTNode()
+                root = root.T
+                continue
+
+            if T[i][j] == 'C' and root.C is not None:
+                root = root.C
+                continue
+            elif T[i][j] == 'C' and root.C is None:
+                root.C = BSTNode()
+                root = root.C
+                continue
+
+        if root.end is True:
             return False
         else:
-            tree = add(tree,T[i])
+            root.end = True
 
     return True
-
 test = ['GATC','GAT', 'GAC', 'GG']
 print(check_different_strings(test))
 test = ['GATC','GAT', 'GAC', 'GG', 'GATC']
