@@ -5,7 +5,7 @@
 #wystarczy wybrać jakikolwiek wierzchołek z pierwszej odcietej silnej składowej, on będzie na początku po posortowaniu topologicznym
 #więc będzie istniejc od niego ścieżka w obrębie swojej spójnej składowej do innych wierzchołków i nastpęnych składowych
 #nalezy raz póścić DFSa, żeby upewnić się, że z pierwszej spójnej składowej da się przedostać do pozostalych
-#zlożoność ssp to O(E + V), taka jak dfsa
+#zlożoność ssp to O(ElogV)
 
 def swap_graph(G): #funkcja odwraca kolejnosc krawedzi w reprezentacji listowej
     n = len(G)

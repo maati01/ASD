@@ -9,23 +9,19 @@ def dijkstra(G,v): #z wikipiedii
     d[v] = 0 #koncowy minimalny dystans
     parents = [None]*n
     processed = [False]*n #wierzchołki przetworzone
-    distance = [inf]*n #oszacowane dystanse
-    distance[v] = 0
     Q = PriorityQueue()
-    Q.put((distance[v],v)) #krotka trzyma akutalny dystans i indeks
+    Q.put((d[v],v)) #krotka trzyma akutalny dystans i indeks
     while not Q.empty():
         temp = Q.get() #priority queue posortowane po oszacowanych dystansach
         u = temp[1]
-        distance[u] = temp[0]
+        d[u] = temp[0]
         if not processed[u]: #sprawdzam tylko nieprzetworzone wierzchołki, to poprawia wydajnosc
             for i in range(n):
                 if G[u][i] != 0 and d[i] > d[u] + G[u][i]: #relaksacja
                     d[i] = d[u] + G[u][i]
                     parents[i] = u
-                    distance[i] = d[i]
-                    Q.put((distance[i],i))
+                    Q.put((d[i],i))
             processed[u] = True
-
 
     return d
 
