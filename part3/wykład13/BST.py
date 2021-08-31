@@ -211,17 +211,21 @@ def remove(tree,key):
 
     elif root.left is None: #sytacja z jednym dzieckiem
         if root.parent.key > root.right.key:
+            root.right.parent = root.parent
             root.parent.left = root.right
 
         else:
+            root.right.parent = root.parent
             root.parent.right = root.right
 
 
     elif root.right is None: #sytacja z jednym dzieckiem
         if root.parent.key > root.left.key:
+            root.left.parent = root.parent
             root.parent.left = root.left
 
         else:
+            root.left.parent = root.parent
             root.parent.right = root.left
 
     else: #gdy mam dwoje dzieci, szukam nastepnika, usuwam go a jego wartosc nadpisuje w miejsce które chcialem pierwotnie usunąć
