@@ -235,6 +235,17 @@ def remove(tree,key):
 
     return tree
 
+def array_to_bst(A):
+  if len(A) == 0:
+    return None
+
+  tree = BSTNode(A[0])
+
+  for i in range(1, len(A)):
+    tree = add(tree, A[i])
+
+  return tree
+
 tree = BSTNode(21)
 
 tree = add(tree, 15)
