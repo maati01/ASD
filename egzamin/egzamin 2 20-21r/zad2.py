@@ -6,6 +6,7 @@ from math import inf
 # sprawdzam czy jeśli usunę itą krawędź róźnica dwóch powstałych drzew będzie mniejsza od obecnej
 # sprawdzam to rekurencyjnie z obecną róźnicą która jest globalna
 # jesli tak to nadpisuje różnicę i zapamiętuje indeks krawędzi
+# O(n)
 
 def calculate_sums(T):  # funkcja oblicza sume poddrzewa w T
     val = 0
