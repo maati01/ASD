@@ -3,11 +3,16 @@ from zad1testy import runtests
 #mapuje punkty z przedziałów
 #przedziały traktuje jako 'krawędzie'
 #sortuje rosnąco
-#sprawdzam czy moge dojść do danego punktu od startu x
+#iteruje po przedziałach
+#sprawdzam czy moge dojść do końca itego przedziału od startu x
 #sortuje malejąco
-#sprawdzam czy mogę dojść do danego punktu od końca y
+#iteruje po przedziałach
+#sprawdzam czy mogę dojść do początku itego przedziału od końca y
+#sprawdzam przedziały
 #jesli w krawędzi [s,t] mogę dojść do punktu s oraz t z końca i początku to
 #oznacza, że należy do rozwiązania
+#dzięki mapowaniu i szukaniu binary searchem punktów na krańcach przedziałów
+#O(nlogn)
 
 
 def binary_search(arr, x):
