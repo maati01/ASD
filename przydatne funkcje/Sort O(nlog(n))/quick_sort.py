@@ -27,4 +27,4 @@ def quick_sort(A):
 
 #print(quick_sort([1,5,2,3,9,100,-100],0,6))
 
-test.test_sort(quick_sort, 20*10**6, 1, (-100, 100), True)
+test.test_sort(quick_sort, 20 * 10 ** 6, 1, (-100, 100), True)

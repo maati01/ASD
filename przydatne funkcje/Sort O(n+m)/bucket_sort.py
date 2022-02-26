@@ -55,5 +55,5 @@ def bucket_sort(A):
     return A
 
 
-test.test_sort(bucket_sort,10**3,10,(-10**4,10**4),True)
+test.test_sort(bucket_sort, 10 ** 3, 10, (-10 ** 4, 10 ** 4), True)
 #print(bucket_sort([31, 3, -29, -18, 7, 7, -37, -21, -35, -17]))

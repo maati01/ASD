@@ -154,8 +154,7 @@ def display1(head):
 
 ##########################################################################
 # random test sort
-from testy import  test_linked_lists
-from random import randint, seed
+from random import randint
 from time import time
 def test_sort():
   rr = (-10**6, 10**6)

@@ -31,4 +31,4 @@ def quick_sort(A):
 
 #print(quick_sort([1]))
 
-test.test_sort(quick_sort, 2*10**6, 1, (-100, 100), False)
+test.test_sort(quick_sort, 2 * 10 ** 6, 1, (-100, 100), False)
