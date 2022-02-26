@@ -1,7 +1,6 @@
 from copy import deepcopy
 from math import inf
 
-#Mateusz Powęska
 #dla każdego wierzchołka wywołuje djikstre sprawdzając najmniejsze ścieżkli między wierzchołkami
 #dla V wierzchołków i złożoności czasowej dijkstry O(V^2) złożoność operacji wynosi O(V^3)
 #szukam najkrótszych scieżek miedzy wierzchołkami od i do j oraz od i do k

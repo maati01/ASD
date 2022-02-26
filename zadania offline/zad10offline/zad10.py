@@ -1,7 +1,7 @@
 from queue import PriorityQueue
 from math import inf
 from copy import deepcopy
-#Mateusz Powęska
+
 #O(V + ElogV)
 #algorytm przechodzi po krawedziach z kazdego wierzchołka
 #sprawdza wartość przepływu w wierzchołku
