@@ -1,7 +1,7 @@
 # ASD 2021 <br />
 Algorytmy i struktury danych realizowane na AGH <br />
 Wybrane zadania z przedmiotu Algorytmy i Struktury Danych. <br />
-Jeśli repo się przydało, możesz zostawić gwiazdkę! :star:
+Jeśli repo było przydatne, możesz zostawić gwiazdkę! :star:
 
 1. [Zadania z ćwiczeń](https://github.com/maati01/ASD/tree/main/%C4%87wiczenia)
 2. [Zadania offline](https://github.com/maati01/ASD/tree/main/zadania%20offline)
